@@ -4,6 +4,7 @@ const fs = require("fs");
 const intern = require("./lib/Intern.js");
 const manager = require("./lib/Manager.js");
 const engineer = require("./lib/Engineer.js");
+const Manager = require("./lib/Manager.js");
 
 function EmployeeInfo() {
     inquirer.prompt([
@@ -45,6 +46,41 @@ function EmployeeInfo() {
         }
     ])
     .then(answers => {
-        
+
     })
+}
+
+function ManagerInfo() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is the team's name?",
+            name: "teamName",
+        }
+        {
+            type: "input",
+            message: "What is the name of the team's Manager?",
+            name: "managerName",
+        }
+        {
+            type: "input",
+            message: "What is the ID of the Manager?",
+            name: "managerID",
+        }
+        {
+            type: "input",
+            message: "What is Manager's email address?",
+            name: "managerEmail",
+        }
+        {
+            type: "input",
+            message: "What is the office number of the Manager?",
+            name: "managerOffice",
+        }
+    ])
+    .then(ManagerData => {
+        teamManager = new Manager(ManagerData.managerName, ManagerData.managerID, ManagerData.managerEmail, ManagerData.managerOffice);
+        teamName = ManagerData.teamName;
+        EmployeeInfo();
+    });
 }
