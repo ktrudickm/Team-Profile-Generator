@@ -1,6 +1,6 @@
 class Employee {
 
-    constructor(name, id, email) {
+    constructor(name, id, email, role='Employee') {
         if (typeof name !== "string" || !name.trim().length) {
             throw new Error("Expected 'name' parameter to be a type of string, and not empty.")
         }
@@ -8,6 +8,7 @@ class Employee {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.role = role;
     }
 
     getName() {
