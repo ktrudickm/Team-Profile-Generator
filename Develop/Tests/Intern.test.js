@@ -1,8 +1,14 @@
 const intern = require("../lib/Intern");
 
 test("Can set school via constructor", () => {
-    const School = "UCLA";
-    const obj = new intern("Foo", 1, "testemail@email.com", School);
+    const School = "OSU";
+    const obj = new intern("Role", 1, "testemail@email.com", School);
     expect(obj.school).toBe(School);
+});
+
+test("getRole() should return the role as: \"Intern\"", () => {
+    const role = "Intern";
+    const obj = new intern("Role", 1, "testemail@email.com", "OSU");
+    expect(obj.getRole()).toBe(role);
 });
 
