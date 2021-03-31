@@ -12,3 +12,9 @@ test("getRole() should return the role as: \"Intern\"", () => {
     expect(obj.getRole()).toBe(role);
 });
 
+test("Can get interns school name via getSchool()", () => {
+    const School = "OSU";
+    const obj = new intern("Role", 1, "testemail@email.com", School);
+    expect(obj.getSchool()).toBe(School);
+});
+
