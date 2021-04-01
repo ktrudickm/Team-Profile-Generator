@@ -4,11 +4,12 @@ const fs = require("fs");
 const intern = require("./lib/Intern.js");
 const manager = require("./lib/Manager.js");
 const engineer = require("./lib/Engineer.js");
-const Intern = require("./lib/Intern.js");
-const Engineer = require("./lib/Engineer.js");
 
 let empArray = [];
+let teamManager;
+let teamName;
 
+// Object Array for Manager Question Prompts
 const ManagerQ = [
     {
         type: "input",
@@ -37,68 +38,71 @@ const ManagerQ = [
     }
 ]
 
-function EmployeeInfo() {
-    inquirer.prompt([
-        {
-            type: "list",
-            message: "What is the role of this Employee?",
-            name: "EmpRole",
-            choices: ["Intern", "Engineer"],
-        }
-        {
-            type: "input",
-            message: "What is the Employee's name?",
-            name: "EmpName",
-        }
-        {
-            type: "input",
-            message: "What is the Employee's ID number?",
-            name: "EmpId", 
-        }
-        {
-            type: "input",
-            message: "What is the Employee's email address?",
-            name: "EmpEmail", 
-        }
-        {
-            type: "input",
-            message: "What is the Github of the Engineer?",
-            name: "github", 
-            when: (userInput) => userInput.EmpRole === "Engineer"
-        }
-        {
-            type: "input",
-            message: "What is the school that the Intern attends?",
-            name: "school",
-            when: (userInput) => userInput.EmpRole === "Intern"
-        }
-        {
-            type: "confirm",
-            message: "Do you have more team members to add?",
-            name: "addEmployee",
-        }
-    ]).then(empInfo => {
-        handleInputs(empInfo);
+// Object Array containing employee question prompts
+const EmployeeInfo = [
+    {
+        type: "list",
+        message: "What is the role of this Employee?",
+        name: "EmpRole",
+        choices: ["Intern", "Engineer"],
     }
+    {
+        type: "input",
+        message: "What is the Employee's name?",
+        name: "EmpName",
+    }
+    {
+        type: "input",
+        message: "What is the Employee's ID number?",
+        name: "EmpId", 
+    }
+    {
+        type: "input",
+        message: "What is the Employee's email address?",
+        name: "EmpEmail", 
+    }
+    {
+        type: "input",
+        message: "What is the Github of the Engineer?",
+        name: "github", 
+        when: (userInput) => userInput.EmpRole === "Engineer"
+    }
+    {
+        type: "input",
+        message: "What is the school that the Intern attends?",
+        name: "school",
+        when: (userInput) => userInput.EmpRole === "Intern"
+    }
+    {
+        type: "confirm",
+        message: "Do you have more team members to add?",
+        name: "addEmployee",
+    }
+]
+
+
+function EmpInfo() {
+    inquirer.prompt(EmployeeInfo)
+        .then(answers => {
+            if (answers.EmpRole === "Engineer") {
+                empArray.push(new engineer(answers.EmpName, answers.EmpId, answers.EmpEmail, answers.github));
+                
+            } else if (answers.EmpRole === "Intern") {
+                empArray.push(new intern(answers.EmpName, answers.EmpId, answers.EmpEmail, answers.school));
+            }
+            if (answers.addEmployee === true) {
+                EmployeeInfo();
+            } else {
+                createHTML(empArray, teamManager, teamName);
+            }
+    });
 }
 
-function handleInputs(answers) {
-    if (answers.EmpRole === "Engineer") {
-        empArray.push(new Engineer(answers.EmpName, answers.EmpId, answers.EmpEmail, answers.github));
-        
-    } else if (answers.EmpRole === "Intern") {
-        empArray.push(new Intern(answers.EmpName, answers.EmpId, answers.EmpEmail, answers.school));
-    }
-    if (answers.addEmployee === true) {
-        EmployeeInfo();
-    } else {
-        createHTML();
-    }
-}
 
-function createHTML() {
-
+// Function to create HTML based on all input responses
+function createHTML(emps, manager, team) {
     
+
 }
 
 
@@ -115,7 +119,7 @@ function init() {
         .then(ManagerData => {
             teamManager = new manager(ManagerData.managerName, ManagerData.managerID, ManagerData.managerEmail, ManagerData.managerOffice);
             teamName = ManagerData.teamName;
-            EmployeeInfo();
+            EmpInfo();
     });
 }
 
