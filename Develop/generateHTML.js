@@ -3,22 +3,49 @@ function generateTeam(data){
     const generateManager = manager => {
         
         return ` 
-        MANGER
-        NAME: ${manager.name}`
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">${manager.name}</h5>
+                <p class="card-text">Manager</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${manager.id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
+                <li class="list-group-item">Office Number: ${manager.office}</li>
+            </ul>
+        </div>`
     };
 
     const generateEngineer = engineer => {
         
         return ` 
-        ENGINEER
-        NAME: ${engineer.name}`
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">${engineer.name}</h5>
+                <p class="card-text">Engineer</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${engineer.id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
+                <li class="list-group-item">GitHub: <a href="${engineer.github}">${engineer.github}</a></li>
+            </ul>
+        </div>`
     }
     
     const generateIntern = intern => {
         
         return ` 
-        INTERN
-        NAME: ${intern.name}`
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">${intern.name}</h5>
+                <p class="card-text">Intern</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${intern.id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+                <li class="list-group-item">School: ${intern.school}</li>
+            </ul>
+        </div>`
     }
     
     let tempArr =[]
@@ -29,18 +56,12 @@ function generateTeam(data){
 
     return tempArr.join('')
 
-  
-
-
     
 }
 
 
 
-
-
-
-function generateHTML(data, teamname ) {
+function generateHTML(data, teamname) {
 
     return `
 <!DOCTYPE html>
@@ -61,7 +82,7 @@ function generateHTML(data, teamname ) {
               <h1 class="display-4 text-center">${teamname}</h1>
             </div>
         </div>
-    <div>
+    <div class="d-flex flex-row">
     ${generateTeam(data)}
     </div>
         
