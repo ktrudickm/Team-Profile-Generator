@@ -94,15 +94,15 @@ function EmpInfo() {
             if (answers.addEmployee === true) {
                 EmpInfo();
             } else {
-                createHTML(empArray, teamManager, teamName);
+                createHTML(empArray);
             }
     });
 }
 
 
 // Function to create HTML based on all input responses
-function createHTML(emps, manager, team) {
-    writeToFile('TeamProfile.html', generateHTML(emps, manager, team));
+function createHTML(emps) {
+    writeToFile('TeamProfile.html', generateHTML(emps, teamName));
 }
 
 
@@ -116,7 +116,8 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(ManagerQ)
         .then(ManagerData => {
-            teamManager = new manager(ManagerData.managerName, ManagerData.managerID, ManagerData.managerEmail, ManagerData.managerOffice);
+            empArray.push(new manager(ManagerData.managerName, ManagerData.managerID, ManagerData.managerEmail, ManagerData.managerOffice));
+            console.log(teamManager)
             teamName = ManagerData.teamName;
             EmpInfo();
     });

@@ -1,4 +1,47 @@
-function generateHTML(data) {
+function generateTeam(data){
+
+    const generateManager = manager => {
+        
+        return ` 
+        MANGER
+        NAME: ${manager.name}`
+    };
+
+    const generateEngineer = engineer => {
+        
+        return ` 
+        ENGINEER
+        NAME: ${engineer.name}`
+    }
+    
+    const generateIntern = intern => {
+        
+        return ` 
+        INTERN
+        NAME: ${intern.name}`
+    }
+    
+    let tempArr =[]
+
+    tempArr.push(data.filter(e => e.getRole() === "Manager").map(manager => generateManager(manager)));
+    tempArr.push(data.filter(e => e.getRole() === "Engineer").map(engineer => generateEngineer(engineer)));
+    tempArr.push(data.filter(e => e.getRole() === "Intern").map(intern => generateIntern(intern)));
+
+    return tempArr.join('')
+
+  
+
+
+    
+}
+
+
+
+
+
+
+function generateHTML(data, teamname ) {
+
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -15,25 +58,15 @@ function generateHTML(data) {
     <body>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-              <h1 class="display-4 text-center">${team}</h1>
+              <h1 class="display-4 text-center">${teamname}</h1>
             </div>
+        </div>
+    <div>
+    ${generateTeam(data)}
+    </div>
+        
         </div>
 
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-            </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
 
 
     </body>
