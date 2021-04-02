@@ -1,17 +1,16 @@
 function generateTeam(data){
 
     const generateManager = manager => {
-        
-        return ` 
-        <div class="card" style="width: 18rem;">
+        return `
+        <div class="card col-lg-3 col-m-2 col-sm-10" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">${manager.name}</h5>
-                <p class="card-text">Manager</p>
+                <p class="card-text">Manager <i class="fas fa-mug-hot"></i></p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${manager.id}</li>
                 <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
-                <li class="list-group-item">Office Number: ${manager.office}</li>
+                <li class="list-group-item">Office Number: ${manager.officeNum}</li>
             </ul>
         </div>`
     };
@@ -19,15 +18,15 @@ function generateTeam(data){
     const generateEngineer = engineer => {
         
         return ` 
-        <div class="card" style="width: 18rem;">
+        <div class="card col-lg-3 col-m-2 col-sm-10" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">${engineer.name}</h5>
-                <p class="card-text">Engineer</p>
+                <p class="card-text">Engineer <i class="fas fa-glasses"></i></p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${engineer.id}</li>
                 <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-                <li class="list-group-item">GitHub: <a href="${engineer.github}">${engineer.github}</a></li>
+                <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></li>
             </ul>
         </div>`
     }
@@ -35,10 +34,10 @@ function generateTeam(data){
     const generateIntern = intern => {
         
         return ` 
-        <div class="card" style="width: 18rem;">
+        <div class="card col-lg-3 col-m-2 col-sm-10" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">${intern.name}</h5>
-                <p class="card-text">Intern</p>
+                <p class="card-text">Intern <i class="fas fa-user-graduate"></i></p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${intern.id}</li>
@@ -71,9 +70,10 @@ function generateHTML(data, teamname) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="https://kit.fontawesome.com/0038082928.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Team Profile</title>
-        <link rel="stylesheet" href="./Assets/css/style.css">
+        <link rel="stylesheet" href="./Assets/style.css">
     </head>
 
     <body>
@@ -82,11 +82,10 @@ function generateHTML(data, teamname) {
               <h1 class="display-4 text-center">${teamname}</h1>
             </div>
         </div>
-    <div class="d-flex flex-row">
+    <div id="team" class="d-flex justify-content-center flex-row row">
     ${generateTeam(data)}
     </div>
         
-        </div>
 
 
 

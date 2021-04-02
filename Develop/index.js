@@ -7,7 +7,6 @@ const manager = require("./lib/Manager.js");
 const engineer = require("./lib/Engineer.js");
 
 let empArray = [];
-let teamManager;
 let teamName;
 
 // Object Array for Manager Question Prompts
@@ -81,7 +80,7 @@ const EmployeeInfo = [
     }
 ]
 
-
+// Inquirer prompt for employee questions. Handles checking for which type of employee is being added.
 function EmpInfo() {
     inquirer.prompt(EmployeeInfo)
         .then(answers => {
@@ -105,7 +104,7 @@ function createHTML(emps) {
     writeToFile('TeamProfile.html', generateHTML(emps, teamName));
 }
 
-
+// Writing file once all inputs/responses have been entered.
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => {
                err ? console.log(err): console.log("Generating Team's Portfolio...");
@@ -117,7 +116,6 @@ function init() {
     inquirer.prompt(ManagerQ)
         .then(ManagerData => {
             empArray.push(new manager(ManagerData.managerName, ManagerData.managerID, ManagerData.managerEmail, ManagerData.managerOffice));
-            console.log(teamManager)
             teamName = ManagerData.teamName;
             EmpInfo();
     });
@@ -127,12 +125,3 @@ function init() {
 init();
 
 
-
-
-
-// function init() {
-//     inquirer.prompt(questions)
-//         .then((response) => {
-//             writeToFile('README.md', generateMarkdown(response))
-//         })
-// }
