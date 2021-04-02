@@ -137,5 +137,3 @@ Jest - [Jest](https://www.npmjs.com/package/jest)
 GitHub Repository - [Team Profile Generator Repository](https://github.com/ktrudickm/Team-Profile-Generator "Team Profile Generator Repository")
 
 Deployed Project - [Deployed Application](https://ktrudickm.github.io/Team-Profile-Generator/ "Deployed Application")
-
-Walkthrough Video - [Walkthrough](https://github.com/ktrudickm/Team-Profile-Generator/blob/main/Develop/Images/walkthrough.webm)
