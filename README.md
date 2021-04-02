@@ -98,17 +98,9 @@ From here, the individual Manager, Intern, and Engineer tests all look pretty si
 
 ![Engineer Test](./Develop/Images/EngineerTest.png)
 
-In order to run the tests to ensure each test passes, the following command is invoked in the command line:
+In order to run the tests to ensure each test passes, the following command is invoked in the command line: npm run test.
 
-```bash
-npm run test
-```
-
-From here, the main index.js file can be created. Here, we create two different question arrays, one for the Manager and one for the employee type/question prompts. We then have functions that utilize inquirer.prompt to have the prompts display in the terminal after invoking the following command:
-
-```bash
-node index.js
-```
+From here, the main index.js file can be created. Here, we create two different question arrays, one for the Manager and one for the employee type/question prompts. We then have functions that utilize inquirer.prompt to have the prompts display in the terminal after invoking the following command: node index.js.
 
 This command will then prompt the user with the specific quesitons, strting with the Manager's questions, and then moving on to the Employee questions for however many employees the manager wants to add.
 
