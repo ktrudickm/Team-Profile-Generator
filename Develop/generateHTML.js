@@ -47,7 +47,7 @@ function generateTeam(data){
         </div>`
     }
     
-    let tempArr =[]
+    let tempArr =[];
 
     tempArr.push(data.filter(e => e.getRole() === "Manager").map(manager => generateManager(manager)));
     tempArr.push(data.filter(e => e.getRole() === "Engineer").map(engineer => generateEngineer(engineer)));
