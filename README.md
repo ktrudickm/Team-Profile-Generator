@@ -1,4 +1,5 @@
 # Team-Profile-Generator
+
 This application is a profile/webpage generator for a team of engineering employees utilizing Node.js command lines and jest for testing purposes.
 
 ## User Story
@@ -37,7 +38,7 @@ The following image shows a mock-up of the generated HTML’s appearance and fun
 
 ![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](./Develop/Images/MockUp.png)
 
-## Development 
+## Development
 
 This application includes `Employee`, `Manager`, `Engineer`, and `Intern` classes.
 
@@ -89,7 +90,7 @@ In addition to `Employee`'s properties and methods, `Intern` also has the follow
 
 ![Intern Class](./Develop/Images/InternClass.png)
 
-We then have four different test files in order to test the user input responses. The main test is the Employee test as shown below: 
+We then have four different test files in order to test the user input responses. The main test is the Employee test as shown below:
 
 ![Employee Test](./Develop/Images/EmployeeTest.png)
 
@@ -103,7 +104,7 @@ In order to run the tests to ensure each test passes, the following command is i
 npm run test
 ```
 
-From here, the main index.js file can be created. Here, we create two different question arrays, one for the Manager and one for the employee type/question prompts. We then have functions that utilize inquirer.prompt to have the prompts display in the terminal after invoking the following command: 
+From here, the main index.js file can be created. Here, we create two different question arrays, one for the Manager and one for the employee type/question prompts. We then have functions that utilize inquirer.prompt to have the prompts display in the terminal after invoking the following command:
 
 ```bash
 node index.js
@@ -131,13 +132,10 @@ Inquirer - [Inquirer](https://www.npmjs.com/package/inquirer)
 
 Jest - [Jest](https://www.npmjs.com/package/jest)
 
-
-
 ## Links
 
 GitHub Repository - [Team Profile Generator Repository](https://github.com/ktrudickm/Team-Profile-Generator "Team Profile Generator Repository")
 
 Deployed Project - [Deployed Application](https://ktrudickm.github.io/Team-Profile-Generator/ "Deployed Application")
 
-Walkthrough Video - ![Walkthrough](https://github.com/ktrudickm/Team-Profile-Generator/blob/main/Develop/Images/walkthrough.webm)
-
+Walkthrough Video - [Walkthrough](https://github.com/ktrudickm/Team-Profile-Generator/blob/main/Develop/Images/walkthrough.webm)
